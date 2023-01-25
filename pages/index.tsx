@@ -50,7 +50,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <main>
-        <p className="text-3xl font-bold">users dummy</p>
+        <p className="text-3xl font-bold">users dummy!!</p>
         <Table users={users} />
       </main>
     </>
