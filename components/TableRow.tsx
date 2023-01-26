@@ -1,4 +1,4 @@
-import { UserType } from "@/pages";
+import { UserType } from "@/interface/UserType";
 import Image from "next/image";
 import React from "react";
 

@@ -1,4 +1,4 @@
-import { UserType } from "@/pages";
+import { UserType } from "@/interface/UserType";
 import TableRow from "./TableRow";
 
 export const Table: React.FC<{ users: UserType[] }> = ({ users }) => {
