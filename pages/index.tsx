@@ -1,43 +1,20 @@
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import { Table } from "@/components/Table";
-import axios from "axios";
 import { useEffect, useState } from "react";
-
-export interface UserType {
-  id: number;
-  firstName: string;
-  lastName: string;
-  userName: string;
-  birthDate: string;
-  email: string;
-  phone: string;
-  avatarURL: string;
-}
+import { UserType } from "@/interface/UserType";
+import { getUsers } from "@/lib/getUsers";
 
 export default function Home() {
   const [users, setUsers] = useState<UserType[]>([]);
 
-  const getApi = () => {
-    axios.get("https://dummyjson.com/users").then((response) => {
-      const filteredUsers = response.data.users.map((user: any) => {
-        return {
-          id: user.id,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          userName: user.username,
-          birthDate: user.birthDate,
-          email: user.email,
-          phone: user.phone,
-          avatarURL: user.image,
-        };
-      });
-      setUsers(filteredUsers);
-    });
+  const handleGetUsers = async () => {
+    const users = await getUsers();
+    setUsers(users);
   };
 
   useEffect(() => {
-    getApi();
+    handleGetUsers();
   }, []);
 
   return (
@@ -50,7 +27,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <main>
-        <p className="text-3xl font-bold">users dummy!!</p>
+        <p className="text-3xl font-bold">users dummy</p>
         <Table users={users} />
       </main>
     </>
