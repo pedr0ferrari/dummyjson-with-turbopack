@@ -24,7 +24,7 @@ const UserDetails: NextPage = () => {
 
   return (
     <main className="flex flex-col items-center">
-      <div className="flex items-center flex-col">
+      <div className="flex flex-col items-center">
         <Avatar
           avatarURL={user?.avatarURL}
           userName={user?.userName}
@@ -33,7 +33,7 @@ const UserDetails: NextPage = () => {
         <h1 className="text-3xl font-semibold">@{user?.userName}</h1>
       </div>
       <div className="grid grid-rows-1 gap-8 py-10">
-        <div className="card w-128 bg-base-200 shadow-xl h-max">
+        <div className="shadow-xl card w-128 bg-base-200 h-max">
           <div className="card-body">
             <h2 className="card-title">Personal Information</h2>
 
@@ -76,11 +76,11 @@ const UserDetails: NextPage = () => {
                 ${user?.company.title}`}
             />
 
-            <div className="card-actions justify-end"></div>
+            <div className="justify-end card-actions"></div>
           </div>
         </div>
 
-        <div className="card w-128 bg-base-200 shadow-xl h-max">
+        <div className="shadow-xl card w-128 bg-base-200 h-max">
           <div className="card-body">
             <h2 className="card-title">Bank Information</h2>
 
@@ -94,11 +94,11 @@ const UserDetails: NextPage = () => {
 
             <DataField field="IBAN" value={user.bank.iban} />
 
-            <div className="card-actions justify-end"></div>
+            <div className="justify-end card-actions"></div>
           </div>
         </div>
 
-        <div className="card w-128 bg-base-200 shadow-xl h-max">
+        <div className="shadow-xl card w-128 bg-base-200 h-max">
           <div className="card-body">
             <h2 className="card-title">Connection Information</h2>
 
@@ -110,7 +110,7 @@ const UserDetails: NextPage = () => {
 
             <DataField field="SSN" value={user.ssn} />
 
-            <div className="card-actions justify-end"></div>
+            <div className="justify-end card-actions"></div>
           </div>
         </div>
       </div>

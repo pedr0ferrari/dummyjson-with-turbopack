@@ -1,8 +1,11 @@
 import { UserType } from "@/interface/UserType";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
 
 const TableRow: React.FC<{ user: UserType }> = ({ user }) => {
+  const router = useRouter();
+
   return (
     <tr>
       <th>
@@ -19,7 +22,7 @@ const TableRow: React.FC<{ user: UserType }> = ({ user }) => {
       </td>
       <td className="flex items-center gap-2">
         <div className="avatar">
-          <div className="mask mask-squircle w-12 h-12">
+          <div className="w-12 h-12 mask mask-squircle">
             <Image
               src={user.avatarURL}
               alt={`${user.firstName}'s avatar`}
@@ -34,7 +37,14 @@ const TableRow: React.FC<{ user: UserType }> = ({ user }) => {
       <td>{user.email}</td>
       <td>{user.phone}</td>
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+        <button
+          className="btn btn-ghost btn-xs"
+          onClick={() => {
+            router.push(`/users/${user.id}`);
+          }}
+        >
+          details
+        </button>
       </th>
     </tr>
   );
