@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { getUserById } from "@/lib/getUserById";
 import { UserType } from "@/interface/UserType";
 import Avatar from "@/components/Avatar";
+import DataField from "@/components/DataField";
 
 const UserDetails: NextPage = () => {
   const router = useRouter();
@@ -22,8 +23,8 @@ const UserDetails: NextPage = () => {
   if (!user) return null;
 
   return (
-    <main className="flex justify-center">
-      <div className="">
+    <main className="flex flex-col items-center">
+      <div className="flex items-center flex-col">
         <Avatar
           avatarURL={user?.avatarURL}
           userName={user?.userName}
@@ -31,120 +32,83 @@ const UserDetails: NextPage = () => {
         />
         <h1 className="text-3xl font-semibold">@{user?.userName}</h1>
       </div>
-      <div className="grid-rows-2">
-        <div aria-label="personal information" className=" p-4">
-          <h2 className="text-xl font-medium">Personal Information</h2>
-        </div>
-
-        <div className="card w-128 bg-base-200 shadow-xl">
+      <div className="grid grid-rows-1 gap-8 py-10">
+        <div className="card w-128 bg-base-200 shadow-xl h-max">
           <div className="card-body">
             <h2 className="card-title">Personal Information</h2>
-            <div className="flex gap-2">
-              <p className="font-medium">Name: </p>
-              <p>
-                {user?.firstName} {user?.lastName}
-              </p>
-            </div>
 
-            <div className="flex gap-2">
-              <p className="font-medium">Blood Group: </p>
-              <p>{user?.bloodGroup}</p>
-            </div>
+            <DataField
+              field="Name"
+              value={`${user.firstName} ${user.lastName}`}
+            />
 
-            <div className="flex gap-2">
-              <p className="font-medium">Gender: </p>
-              <p>{user?.gender}</p>
-            </div>
+            <DataField field="Blood Group" value={user.bloodGroup} />
 
-            <div className="flex gap-2">
-              <p className="font-medium">Height: </p>
-              <p>{user?.height} cm</p>
-            </div>
+            <DataField field="Gender" value={user.gender} />
 
-            <div className="flex gap-2">
-              <p className="font-medium">Weight: </p>
-              <p>{user?.weight} kg</p>
-            </div>
+            <DataField
+              field="Height"
+              value={user.height}
+              measurementUnit="cm"
+            />
 
-            <div className="flex gap-2">
-              <p className="font-medium">Phone: </p>
-              <p>{user?.phone}</p>
-            </div>
+            <DataField
+              field="Weight"
+              value={user.weight}
+              measurementUnit="kg"
+            />
 
-            <div className="flex gap-2">
-              <p className="font-medium">Email: </p>
-              <p>{user?.email}</p>
-            </div>
+            <DataField field="Phone" value={user.phone} />
 
-            <div className="flex gap-2">
-              <p className="font-medium">User Address:</p>
-              <p>
-                {user?.address.address}, {user?.address.city},{" "}
-                {user?.address.state} - {user?.address.postalCode}
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <p className="font-medium">University: </p>
-              <p>{user?.university}</p>
-            </div>
+            <DataField field="Email" value={user.email} />
 
-            <div className="flex gap-2">
-              <p className="font-medium">Job: </p>
-              <p>
-                {user?.company.name} - {user?.company.department}:{" "}
-                {user?.company.title}
-              </p>
-            </div>
+            <DataField
+              field="User Address"
+              value={`${user?.address.address}, ${user?.address.city},${" "}
+                ${user?.address.state} - ${user?.address.postalCode}`}
+            />
+
+            <DataField field="University" value={user.university} />
+
+            <DataField
+              field="Job"
+              value={`${user?.company.name} - ${user?.company.department}:${" "}
+                ${user?.company.title}`}
+            />
+
             <div className="card-actions justify-end"></div>
           </div>
         </div>
 
-        <div className="card w-128 bg-base-200 shadow-xl">
+        <div className="card w-128 bg-base-200 shadow-xl h-max">
           <div className="card-body">
             <h2 className="card-title">Bank Information</h2>
-            <div className=" flex gap-2">
-              <p className="font-medium">Card Type: </p>
-              <p>{user?.bank.cardType}</p>
-            </div>
-            <div className=" flex gap-2">
-              <p className="font-medium">Card Number: </p>
-              <p>{user?.bank.cardNumber}</p>
-            </div>
-            <div className=" flex gap-2">
-              <p className="font-medium">Card Expire: </p>
-              <p>{user?.bank.cardExpire}</p>
-            </div>
-            <div className=" flex gap-2">
-              <p className="font-medium">Currency: </p>
-              <p>{user?.bank.currency}</p>
-            </div>
-            <div className=" flex gap-2">
-              <p className="font-medium">IBAN: </p>
-              <p>{user?.bank.iban}</p>
-            </div>
+
+            <DataField field="Card Type" value={user.bank.cardType} />
+
+            <DataField field="Card Number" value={user.bank.cardNumber} />
+
+            <DataField field="Card Expire" value={user.bank.cardExpire} />
+
+            <DataField field="Currency" value={user.bank.currency} />
+
+            <DataField field="IBAN" value={user.bank.iban} />
+
             <div className="card-actions justify-end"></div>
           </div>
         </div>
 
-        <div className="card w-128 bg-base-200 shadow-xl">
+        <div className="card w-128 bg-base-200 shadow-xl h-max">
           <div className="card-body">
             <h2 className="card-title">Connection Information</h2>
-            <div className=" flex gap-2">
-              <p className="font-medium">IP: </p>
-              <p>{user?.ip}</p>
-            </div>
-            <div className=" flex gap-2">
-              <p className="font-medium">MacAddress: </p>
-              <p>{user?.macAddress}</p>
-            </div>
-            <div className=" flex gap-2">
-              <p className="font-medium">Maiden Name: </p>
-              <p>{user?.maidenName}</p>
-            </div>
-            <div className=" flex gap-2">
-              <p className="font-medium">SSN: </p>
-              <p>{user?.ssn}</p>
-            </div>
+
+            <DataField field="IP" value={user.ip} />
+
+            <DataField field="MacAddress" value={user.macAddress} />
+
+            <DataField field="Maiden Name" value={user.maidenName} />
+
+            <DataField field="SSN" value={user.ssn} />
 
             <div className="card-actions justify-end"></div>
           </div>
