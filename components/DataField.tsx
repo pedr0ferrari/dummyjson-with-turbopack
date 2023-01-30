@@ -7,8 +7,8 @@ const DataField: React.FC<{
 }> = ({ field, value, measurementUnit }) => {
   return (
     <div className="flex gap-2">
-      <p className="font-medium w-max">{field}:</p>
-      <p className="text-right">
+      <p className="text-sm font-medium w-max md:text-base">{field}:</p>
+      <p className="text-sm text-right md:text-base">
         {value} {measurementUnit}
       </p>
     </div>

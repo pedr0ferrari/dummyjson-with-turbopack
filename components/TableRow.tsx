@@ -8,12 +8,7 @@ const TableRow: React.FC<{ user: UserType }> = ({ user }) => {
 
   return (
     <tr>
-      <th>
-        <label>
-          <input type="checkbox" className="checkbox" />
-        </label>
-      </th>
-      <td>
+      <td className="hidden md:table-cell">
         <div className="flex items-center space-x-3">
           <div>
             <div className="font-bold">{user.id}</div>
@@ -34,8 +29,8 @@ const TableRow: React.FC<{ user: UserType }> = ({ user }) => {
         </div>
         {user.userName}
       </td>
-      <td>{user.email}</td>
-      <td>{user.phone}</td>
+      <td className="hidden md:table-cell">{user.email}</td>
+      <td className="hidden md:table-cell">{user.phone}</td>
       <th>
         <button
           className="btn btn-ghost btn-xs"
