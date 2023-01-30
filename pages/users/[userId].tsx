@@ -5,6 +5,7 @@ import { getUserById } from "@/lib/getUserById";
 import { UserType } from "@/interface/UserType";
 import Avatar from "@/components/Avatar";
 import DataField from "@/components/DataField";
+import Navbar from "@/components/Navbar";
 
 const UserDetails: NextPage = () => {
   const router = useRouter();
@@ -24,63 +25,53 @@ const UserDetails: NextPage = () => {
 
   return (
     <main className="flex flex-col items-center">
-      <div className="flex flex-col items-center">
+      <Navbar />
+      <header className="flex flex-col items-center">
         <Avatar
           avatarURL={user?.avatarURL}
           userName={user?.userName}
           size="sm"
         />
         <h1 className="text-3xl font-semibold">@{user?.userName}</h1>
-      </div>
-      <div className="grid grid-rows-1 gap-8 py-10">
-        <div className="shadow-xl card w-128 bg-base-200 h-max">
+      </header>
+      <section className="grid grid-rows-1 gap-8 px-4 py-10">
+        <article className="shadow-xl card bg-base-200 h-max md:w-[768px]">
           <div className="card-body">
             <h2 className="card-title">Personal Information</h2>
-
             <DataField
               field="Name"
               value={`${user.firstName} ${user.lastName}`}
             />
-
             <DataField field="Blood Group" value={user.bloodGroup} />
-
             <DataField field="Gender" value={user.gender} />
-
             <DataField
               field="Height"
               value={user.height}
               measurementUnit="cm"
             />
-
             <DataField
               field="Weight"
               value={user.weight}
               measurementUnit="kg"
             />
-
             <DataField field="Phone" value={user.phone} />
-
             <DataField field="Email" value={user.email} />
-
             <DataField
               field="User Address"
               value={`${user?.address.address}, ${user?.address.city},${" "}
                 ${user?.address.state} - ${user?.address.postalCode}`}
             />
-
             <DataField field="University" value={user.university} />
-
             <DataField
               field="Job"
               value={`${user?.company.name} - ${user?.company.department}:${" "}
                 ${user?.company.title}`}
             />
-
             <div className="justify-end card-actions"></div>
           </div>
-        </div>
+        </article>
 
-        <div className="shadow-xl card w-128 bg-base-200 h-max">
+        <article className="shadow-xl md:w-132 card bg-base-200 h-max">
           <div className="card-body">
             <h2 className="card-title">Bank Information</h2>
 
@@ -96,9 +87,9 @@ const UserDetails: NextPage = () => {
 
             <div className="justify-end card-actions"></div>
           </div>
-        </div>
+        </article>
 
-        <div className="shadow-xl card w-128 bg-base-200 h-max">
+        <article className="shadow-xl card w-132 bg-base-200 h-max">
           <div className="card-body">
             <h2 className="card-title">Connection Information</h2>
 
@@ -112,8 +103,8 @@ const UserDetails: NextPage = () => {
 
             <div className="justify-end card-actions"></div>
           </div>
-        </div>
-      </div>
+        </article>
+      </section>
     </main>
   );
 };

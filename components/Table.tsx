@@ -3,21 +3,17 @@ import TableRow from "./TableRow";
 
 export const Table: React.FC<{ users: UserType[] }> = ({ users }) => {
   return (
-    <div className="overflow-x-auto w-full">
+    <section className="flex flex-col w-full gap-8 px-8 py-4 overflow-x-auto drop-shadow-xl">
+      <h1 className="text-3xl font-semibold ">users</h1>
       <table className="table w-full">
         {/* <!-- head --> */}
         <thead>
           <tr>
-            <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
-            </th>
-            <th>id</th>
+            <th className="hidden md:table-cell">id</th>
             <th>user name</th>
-            <th>email</th>
-            <th>phone</th>
-            <th></th>
+            <th className="hidden md:table-cell">email</th>
+            <th className="hidden md:table-cell">phone</th>
+            <th>user details</th>
           </tr>
         </thead>
         <tbody>
@@ -28,15 +24,14 @@ export const Table: React.FC<{ users: UserType[] }> = ({ users }) => {
         {/* <!-- foot --> */}
         <tfoot>
           <tr>
-            <th></th>
-            <th>id</th>
+            <th className="hidden md:table-cell">id</th>
             <th>user name</th>
-            <th>email</th>
-            <th>phone</th>
-            <th></th>
+            <th className="hidden md:table-cell">email</th>
+            <th className="hidden md:table-cell">phone</th>
+            <th>user details</th>
           </tr>
         </tfoot>
       </table>
-    </div>
+    </section>
   );
 };
